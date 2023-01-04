@@ -1,0 +1,42 @@
+server:
+  port: 7100
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5400/db
+    username: db
+    password: db
+  jpa:
+    properties:
+      jakarta:
+        persistence:
+          sharedCache:
+            mode: NONE
+      hibernate:
+        format_sql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    enabled: false
+
+springdoc:
+  swagger-ui:
+    use-root-path: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus,health,metrics
+
+app:
+  api-base-path: "/api"
+  jwt:
+    lifeTime: 100000
+    secret: 1234

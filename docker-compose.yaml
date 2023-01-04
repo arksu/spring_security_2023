@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: db
+      POSTGRES_USER: db
+      POSTGRES_DB: db
+    ports:
+      - 5400:5432
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - 8900:8080
